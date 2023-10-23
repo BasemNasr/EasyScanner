@@ -2,7 +2,10 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
+    id("maven-publish")
 }
+group = "com.bn.easyscanner"
+version = 1.0
 
 android {
     namespace = "com.bn.easyscanner"
@@ -53,4 +56,18 @@ dependencies {
 
     implementation(libs.mlkit.barcodeScanning)
 
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.bn.easyscanner"
+                artifactId = "EasyScanner"
+                version = "1.0"
+            }
+        }
+    }
 }
