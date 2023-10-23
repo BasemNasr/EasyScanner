@@ -1,0 +1,53 @@
+[versions]
+
+androidconfig-minSdk = "21"
+androidconfig-compileSdk = "33"
+androidconfig-targetSdk = "33"
+androidconfig-buildTools = "33.0.2"
+
+androidGradle = "8.1.1"
+kotlin = "1.9.0"
+
+appcompat = "1.6.1"
+core = "1.10.1"
+
+cameraX = "1.2.3"
+
+barcodeScanning = "17.1.0"
+barcodeScanningGms = "18.2.0"
+
+materialDesign = "1.9.0"
+
+detekt = "1.23.0"
+dokka = "1.8.20"
+
+junit = "5.10.0"
+constraintlayout = "2.1.4"
+
+[libraries]
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+androidx-camera = { module = "androidx.camera:camera-camera2", version.ref = "cameraX" }
+androidx-cameraLifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "cameraX" }
+androidx-cameraPreview = { module = "androidx.camera:camera-view", version.ref = "cameraX" }
+androidx-core = { module = "androidx.core:core-ktx", version.ref = "core" }
+
+mlkit-barcodeScanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "barcodeScanning" }
+mlkit-barcodeScanningGms = { module = "com.google.android.gms:play-services-mlkit-barcode-scanning", version.ref = "barcodeScanningGms" }
+
+google-materialDesign = { module = "com.google.android.material:material", version.ref = "materialDesign" }
+
+test-junitApi = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
+test-junitEngine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
+
+detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradle" }
+android-library = { id = "com.android.library", version.ref = "androidGradle" }
+
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

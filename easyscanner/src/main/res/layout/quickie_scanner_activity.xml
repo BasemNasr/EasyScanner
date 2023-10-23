@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QRScannerActivity"
+    >
+
+  <androidx.camera.view.PreviewView
+      android:id="@+id/preview_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      />
+
+  <com.bn.easyscanner.QROverlayView
+      android:id="@+id/overlay_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="invisible"
+      tools:visibility="visible"
+      />
+
+  <RelativeLayout
+      android:id="@+id/layoutTextAction"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="gone">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTextAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="40dp"
+        android:elevation="20dp"
+        android:text="Enter Code Manually"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/quickie_white"
+        />
+
+  </RelativeLayout>
+
+
+</FrameLayout>
