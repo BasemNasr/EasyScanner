@@ -40,78 +40,38 @@ scanQrCode.launch(
      ScannerConfig.build {
           setShowTextAction(true, getString(R.string.or_enter_code_number))
                 setShowCloseButton(true)
+		//you can put other configs here 
          }
 )
 
-```
-```kotlin
-class PickerProfileFragment : Fragment(), OnCaptureMedia {
-    private lateinit var easyPicker: FragmentEasyPicker
-    var mProfileImagePath = ""
-    .
-    .
-    .
-    
-    override fun onCreate(savedInstanceState: Bundle?) {
-       .
-       setUpImagePicker()
-       btn.setOnClickListener {
-            easyPicker.chooseImage()
-       }
-    }
-    
-    private fun setUpImagePicker() {
-      easyPicker =  FragmentEasyPicker.Builder(this@PickerProfileFragment)
-                .setRequestCode(MainActivity.PICK_PROFILE_IMAGE)
-                .setListener(this@PickerProfileFragment).build()
-    }
-    
-    override fun onCaptureMedia(request: Int, files: ArrayList<FileResource>?) {
-        when (request) {
-            PICK_PROFILE_IMAGE -> {
-               // getting file path (file.path)
-		files?.let {
-                    mProfileImagePath = files[0]?.path ?: ""
-                    Glide.with(requireActivity()).load(mProfileImagePath)
-                        .into(requireView().findViewById<AppCompatImageView>(R.id.ivCaptainProfileImg))
-                }
-            }
-        }
-    }
-    
-}
+// other config
+setOverlayStringRes(@StringRes stringRes: Int)
+setOverlayDrawableRes(@DrawableRes drawableRes: Int?)
+setHorizontalFrameRatio(ratio: Float)
+setHapticSuccessFeedback(enable: Boolean)
+setShowTorchToggle(enable: Boolean)
+setUseFrontCamera(enable: Boolean)
+setShowTextAction(enable: Boolean, text: String) // bottom text
+
+//Bar Code Formate
+selectedBarcodeFormat = BarcodeFormat.FORMAT_ALL_FORMATS
+setBarcodeFormats(listOf(selectedBarcodeFormat)) // set interested barcode formats
 
 ```
+
  
-# Other Features
+#### Jetpack Compose
+Use the `rememberLauncherForActivityResult()` API to register the `ScanQRCode()` ActivityResultContract together with a callback in your composable:
 ```kotlin
-  
-  // choose image
-  easyPicker.chooseImage()
-  
- // choose And Compress Image
-  easyPicker.chooseAndCompressImage()
-  
-   // choose Video From Gallery
-  easyPicker.chooseVideo()
-  
-  //choose file and getting file path
-    easyPicker.chooseFile()
+@Composable
+fun GetQRCodeExample() {
+    val scanQrCodeLauncher = rememberLauncherForActivityResult(ScanQRCode()) { result ->
+        // handle QRResult
+    }
     
-      
-  //chooseMultipleImages
- private lateinit var multiImagesEasyPicker: EasyPicker
- multiImagesEasyPicker =
-            EasyPicker.Builder(this@SecondFragment)
-                .setRequestCode(MainActivity.PICK_IMAGES)
-                .setListener(this@SecondFragment)
-                .setMaxSelectionLimit(5)
-                .build()
- multiImagesEasyPicker.chooseMultipleImages()
-
-
-
-
+    Button(onClick = { scanQrCodeLauncher.launch(null) }) {
+    …
+}
 ```
 
 
@@ -127,7 +87,7 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 6. Issue that pull request!
 7. Always add a `README` and/or `requirements.txt` to your added code.
 
-## Report bugs using Github's [issues](https://github.com/BasemNasr/EasyMediaPicker/issues)
+## Report bugs using Github's [issues](https://github.com/BasemNasr/EasyScanner/issues)
 We use GitHub issues to track public bugs. Report a bug by opening a new issue it's that easy!
 
 *Great Bug Reports* tend to have:
