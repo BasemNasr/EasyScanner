@@ -34,49 +34,14 @@ dependencies {
 
 # Easy Way To Using Library
 ```kotlin
-class MainActivity : AppCompatActivity(), OnCaptureMedia {
-    private lateinit var easyPicker: EasyPicker
-    var mProfileImagePath = ""
-    .
-    .
-    .
-    
-    override fun onCreate(savedInstanceState: Bundle?) {
-       .
-       setUpImagePicker()
-       btn.setOnClickListener {
-            easyPicker.chooseImage()
-       }
-    }
-    
-    private fun setUpImagePicker() {
-      easyPicker = EasyPicker.Builder(this@MainActivity)
-                .setRequestCode(PICK_PROFILE_IMAGE)
-                .setIconsAndTextColor(R.drawable.camera,R.drawable.gallery,R.color.black)
-                .setSheetBackgroundColor(R.color.white)
-                .setListener(this@MainActivity)
-                .build()
-    }
-    
-    override fun onCaptureMedia(request: Int, files: ArrayList<FileResource>?) {
-        when (request) {
-            PICK_PROFILE_IMAGE -> {
-               // getting file path (file.path)
-          
-                val imagePath = if (files?.get(0)?.path!!.isNotEmpty()) {
-                    UploadImages.resizeAndCompressImageBeforeSend(
-                        this@MainActivity, files[0].path, File(files[0].path).name
-                    )
-                } else files[0].path
-
-                mProfileImagePath = imagePath!!
-                Glide.with(this@MainActivity).load(mProfileImagePath)
-                    .into(findViewById<AppCompatImageView>(R.id.ivCaptainProfileImg))
-            }
-        }
-    }
-    
-}
+private val scanQrCode = registerForActivityResult(ScanCustomCode(), ::onScanResult)
+// QR SCANNER
+scanQrCode.launch(
+     ScannerConfig.build {
+          setShowTextAction(true, getString(R.string.or_enter_code_number))
+                setShowCloseButton(true)
+         }
+)
 
 ```
 ```kotlin
