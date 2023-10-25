@@ -1,13 +1,10 @@
 # Easy Scanner
 Anroid library handling Qr Scanning and barcode scanner in easy and fast way 
 
-- Select Image From Gallery
-- Capture Image From Gallery
-- Select Video From Gallery
-- Multi Choose Images
-- Select File From Storage
-- We can using this library for compressing images in android (befor upload it to server)
-- Compressing Image in small sizes without losing image quality 
+- Easy API for launching the QR scanner and receiving results by using the new Activity Result API.
+- Modern design, edge-to-edge scanning view with multilingual user hint.
+- Android Jetpack CameraX for communicating with the camera and showing the preview.
+- ML Kit Vision API for best, fully on-device barcode recognition and decoding.
 
 
 Qr Scanner                                                |  BarCode Scanner            
